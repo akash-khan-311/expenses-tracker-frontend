@@ -5,6 +5,7 @@ import { TRegisterFormInputs } from "@/types";
 import { uploadImageToCloudinary } from "@/utils/uploadImageToCloudinary";
 import { Loader2Icon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -72,31 +73,28 @@ const Register = () => {
 
     }
 
-
-
-
-
   };
 
   return (
-    <div className="flex h-[calc(100vh-64px)] w-full flex-col items-center justify-center">
+    <div className="flex items-center justify-center mt-20 md:mt-0">
 
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white">Register Now</h1>
-      <div className="md:w-[35%] w-full px-3">
+
+      <div className="relative my-10 w-full max-w-sm p-6 space-y-6 bg-black rounded-lg border border-zinc-200 dark:border-zinc-800 shadow-lg dark:shadow-zinc-900/50">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white">Register Now</h1>
         <form onSubmit={handleSubmit(submitForm)}>
           <div className="py-2">
             <Field label="Name" required htmlFor="name" error={errors.name}>
-              <Input {...register('name', { required: "Name is required" })} id="name" type="text" name="name" placeholder="Your Name" />
+              <Input className="text-white"  {...register('name', { required: "Name is required" })} id="name" type="text" name="name" placeholder="Your Name" />
             </Field>
           </div>
           <div className="py-2">
             <Field label="Email" required htmlFor="email" error={errors.email}>
-              <Input {...register('email', { required: "Email Address is required" })} id="email" type="email" name="email" placeholder="Your Email Address" />
+              <Input className="text-white" {...register('email', { required: "Email Address is required" })} id="email" type="email" name="email" placeholder="Your Email Address" />
             </Field>
           </div>
           <div className="py-2">
             <Field label="Password" required htmlFor="password" error={errors.password}>
-              <Input {...register('password', { required: "Password is required", minLength: { value: 8, message: "Password must be at least 8 characters" }, maxLength: { value: 32, message: "Password must be at most 32 characters" } })} id="password" type="password" name="password" placeholder="Your Password" />
+              <Input className="text-white" {...register('password', { required: "Password is required", minLength: { value: 8, message: "Password must be at least 8 characters" }, maxLength: { value: 32, message: "Password must be at most 32 characters" } })} id="password" type="password" name="password" placeholder="Your Password" />
             </Field>
           </div>
           <div >
@@ -112,7 +110,7 @@ const Register = () => {
             </div>
             <div className="py-2">
               <Field label="Profile Image" required htmlFor="profileImg" error={errors.profileImg}>
-                <Input
+                <Input className="text-white placeholder:text-white"
                   {...register("profileImg", {
                     required: "Profile image is required",
                   })}
@@ -129,6 +127,9 @@ const Register = () => {
             </Button>
           </div>
         </form>
+        <div className="text-center capitalize text-white mt-4">
+          don&apos;t have an account? <Link href="/login" className="text-blue-500">Login</Link>
+        </div>
       </div>
     </div>
   );
