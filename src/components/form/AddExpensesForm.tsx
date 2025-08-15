@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
 import { Button } from "@/components/ui/button";
@@ -16,7 +17,7 @@ import Field from "./Field";
 
 const categories = ["Transport", "Food", "Health", "Entertainment", "Shopping"];
 
-const AddExpensesForm = () => {
+const AddExpensesForm = ({ onAddExpense }: { onAddExpense: (data: any) => void }) => {
   const { register, reset, handleSubmit, control, formState: { errors } } = useForm<TExpensesProps>();
   const [loading, setLoading] = useState(false);
 
@@ -44,6 +45,7 @@ const AddExpensesForm = () => {
       if (result?.success) {
         toast.success(result?.message);
         setLoading(false);
+        onAddExpense(result?.data);
         reset();
       }
     } catch (error) {
@@ -57,7 +59,6 @@ const AddExpensesForm = () => {
 
   return (
     <div>
-
       <div className="border p-10 rounded-2xl items-center bg-gray-600 my-10">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white py-10 text-center ">Add Expenses</h1>
         <form onSubmit={handleSubmit(submitForm)}>
@@ -93,8 +94,8 @@ const AddExpensesForm = () => {
               <Field label="Date" required htmlFor="date" error={errors.date}>
                 <Controller
                   control={control}
-                  name="date"
                   rules={{ required: "Date is required" }}
+                  name="date"
                   render={({ field }) => (
                     <Popover>
                       <PopoverTrigger asChild>

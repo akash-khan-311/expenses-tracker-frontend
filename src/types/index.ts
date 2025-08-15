@@ -11,6 +11,7 @@ export type LoginFormInputs = {
 };
 
 export type TExpensesProps = {
+  _id?: string;
   title: string;
   amount: number;
   category: string;

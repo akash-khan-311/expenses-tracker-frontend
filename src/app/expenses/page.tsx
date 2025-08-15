@@ -1,10 +1,11 @@
-import AddExpenses from "@/components/expenses/AddExpenses";
+import ExpensesList from "@/components/expenses/ExpensesList";
 
 const ExpensesPage = () => {
   return (
     <div className="container mx-auto px-3 md:px-0">
 
-      <AddExpenses />
+
+      <ExpensesList />
     </div>
   );
 };
