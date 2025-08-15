@@ -24,17 +24,12 @@ const ExpensesList = () => {
       prev.map(exp => (exp._id === id ? { ...exp, ...updatedData } : exp))
     );
   };
-
   const handleDelete = (id: string) => {
     setExpenses(prev => prev.filter(exp => exp._id !== id));
   };
-
-
   const handleAddExpense = (newExpense: any) => {
     setExpenses((prev) => [newExpense, ...prev]);
   };
-
-
   useEffect(() => {
     fetchExpenses();
   }, []);

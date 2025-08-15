@@ -1,6 +1,6 @@
 # 💰 Expense Tracker - Frontend
 
-A modern, responsive, and feature-rich expense management application frontend built with **Next.js 14**, **TypeScript**, and **TailwindCSS**, designed to seamlessly integrate with the backend API for real-time expense tracking.
+A modern, responsive, and feature-rich expense management application frontend built with **Next.js 15+**, **TypeScript**, and **TailwindCSS**, designed to seamlessly integrate with the backend API for real-time expense tracking.
 
 ---
 

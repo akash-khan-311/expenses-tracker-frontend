@@ -6,9 +6,6 @@ import { useState } from "react";
 import EditExpenseForm from "../form/EditExpenseForm";
 import { Button } from "../ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
-
-
-
 interface Props {
   expense: TExpensesProps;
   onUpdate: ({ expense, onUpdate }: Props) => void;
@@ -31,7 +28,7 @@ const ExpensesCard = ({
     try {
       const result = await deleteExpenses(expense._id as string);
       console.log(result)
-      onDelete(expense._id as string); // parent state update
+      onDelete(expense._id as string);
     } catch (error) {
       console.log(error);
     } finally {
