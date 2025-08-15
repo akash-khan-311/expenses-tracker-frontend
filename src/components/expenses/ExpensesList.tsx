@@ -43,18 +43,27 @@ const ExpensesList = () => {
     <>
       <AddExpensesForm onAddExpense={handleAddExpense} />
       <div className="bg-gray-900 text-white min-h-screen p-6">
-        <h1 className="text-3xl font-semibold mb-6">Expenses</h1>
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 text-center">Expenses</h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {expenses.map((expense) => (
-            <ExpensesCard
-              key={expense._id}
-              expense={expense}
-              onUpdate={handleUpdate}
-              onDelete={handleDelete}
-            />
-          ))}
-        </div>
+        {
+          expenses.length ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+              {
+                expenses.map((expense) => (
+                  <ExpensesCard
+                    key={expense._id}
+                    expense={expense}
+                    onUpdate={handleUpdate}
+                    onDelete={handleDelete}
+                  />
+                ))
+              }
+            </div>
+          ) : (<>
+            <div className="text-2xl md:text-3xl lg:text-4xl flex items-center justify-center">No expenses found.</div>
+          </>)
+        }
       </div>
     </>
 
